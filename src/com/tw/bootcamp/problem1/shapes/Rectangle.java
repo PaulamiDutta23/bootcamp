@@ -10,10 +10,16 @@ public class Rectangle {
     }
 
     public double calculateArea() {
+        if(this.length < 1 || this.breadth<1) {
+           throw new RuntimeException("length or breadth cannot be less than 1");
+        }
         return this.length * this.breadth;
     }
 
     public double calculatePerimeter() {
+        if(this.length < 1 || this.breadth<1) {
+            throw new RuntimeException("length or breadth cannot be less than 1");
+        }
         return 2 * (this.length + this.breadth);
     }
 }

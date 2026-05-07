@@ -25,7 +25,20 @@ class RectangleTest {
             assertEquals(7.04, rectangle.calculateArea(), 0.1);
         }
 
+        @Test
+        @DisplayName("- double & int")
+        void shouldCalculateAreaForDoubleAndIntValues() {
+            Rectangle rectangle = new Rectangle(2.2, 3);
+            assertEquals(6.6, rectangle.calculateArea(), 0.1);
+        }
 
+        @Test
+        @DisplayName("- Error")
+        void shouldThrowErrorOnZeroValues() {
+            Rectangle rectangle = new Rectangle(2.2, 0);
+            RuntimeException error = assertThrows(RuntimeException.class, () -> rectangle.calculateArea());
+            assertEquals("length or breadth cannot be less than 1",error.getMessage());
+        }
     }
 
     @Nested
@@ -50,6 +63,14 @@ class RectangleTest {
         void shouldCalculatePerimeterForDoubleAndInt() {
             Rectangle rectangle = new Rectangle(2.2, 3);
             assertEquals(10.4, rectangle.calculatePerimeter(), 0.1);
+        }
+
+        @Test
+        @DisplayName("- Error")
+        void shouldThrowErrorOnZeroValues() {
+            Rectangle rectangle = new Rectangle(2.2, 0);
+            RuntimeException error = assertThrows(RuntimeException.class, () -> rectangle.calculatePerimeter());
+            assertEquals("length or breadth cannot be less than 1",error.getMessage());
         }
     }
 }
