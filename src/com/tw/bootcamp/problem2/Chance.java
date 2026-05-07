@@ -3,10 +3,14 @@ package com.tw.bootcamp.problem2;
 import java.util.Objects;
 
 public class Chance {
-    private final double probability;
+    private double probability;
 
     public Chance(double probability) {
         this.probability = probability;
+    }
+
+    public Chance() {
+
     }
 
     @Override
@@ -23,5 +27,9 @@ public class Chance {
 
     public double inverse() {
         return 1 - this.probability;
+    }
+
+    public double generateChance(double totalSampleSpace, double noOfFavourableEvent) {
+        return noOfFavourableEvent/totalSampleSpace;
     }
 }
