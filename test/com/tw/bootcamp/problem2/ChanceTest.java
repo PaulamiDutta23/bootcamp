@@ -9,37 +9,38 @@ public class ChanceTest {
     @Test
     @DisplayName("chance of getting tail")
     void chanceOfGettingTail(){
-        Chance chance = new Chance(0.5);
-        assertEquals(new Chance(0.5),chance);
+        Chance chanceOfGettingTail = Chance.create(0.5);
+        assertEquals(Chance.create(0.5),chanceOfGettingTail);
     }
 
     @Test
     @DisplayName("chance of not getting tail")
     void chanceOfNotGettingTail(){
-        Chance chance = new Chance(0.5);
-        assertEquals(0.5,chance.inverse());
+        Chance chanceOfGettingTail = Chance.create(0.5);
+        Chance chanceOfNotGettingTail = chanceOfGettingTail.not();
+        assertEquals(Chance.create(0.5),chanceOfNotGettingTail);
     }
 
     @Test
     @DisplayName("chance of getting tail for two coins")
     void chanceOfNotGettingTailForTwoCoins(){
-        Chance chance1 = new Chance(0.5);
-        Chance chance2 = new Chance(0.5);
-        assertEquals(0.25,Chance.intersection(chance1, chance2));
+        Chance chanceOfGettingTailOnCoinA = Chance.create(0.5);
+        Chance chanceOfGettingTailOnCoinB = Chance.create(0.5);
+        assertEquals(Chance.create(0.25),chanceOfGettingTailOnCoinA.and(chanceOfGettingTailOnCoinB));
     }
 
     @Test
     @DisplayName("chance of getting 3 on a dice")
     void chanceOfGetting3OnADice(){
-        Chance chance = new Chance();
-        assertEquals(0.16,chance.generateChance(6,1),0.1);
+        Chance chanceOfGetting3OnADice = Chance.create(0.16);
+        assertEquals(Chance.create(0.16), chanceOfGetting3OnADice);
     }
 
     @Test
     @DisplayName("chance of getting at least one tail on flipping 2 coins")
     void chanceOfGettingAtLeast1Tail(){
-        Chance chance1 = new Chance(0.5);
-        Chance chance2 = new Chance(0.5);
-        assertEquals(0.75,Chance.union(chance1, chance2));
+        Chance chanceOfGettingTailOnCoinA = Chance.create(0.5);
+        Chance chanceOfGettingTailOnCoinB = Chance.create(0.5);
+        assertEquals(Chance.create(0.75),chanceOfGettingTailOnCoinA.or(chanceOfGettingTailOnCoinB));
     }
 }
