@@ -24,4 +24,22 @@ public class SquareTest {
             assertEquals(4.84, square.calculateArea(), 0.1);
         }
     }
+
+    @Nested
+    @DisplayName("square perimeter")
+    class SquarePerimeterTest {
+        @Test
+        @DisplayName("- int")
+        void shouldCalculatePerimeterForInt() {
+            Square square = new Square(2);
+            assertEquals(8, square.calculatePerimeter());
+        }
+
+        @Test
+        @DisplayName("- double")
+        void shouldCalculatePerimeterForDouble() {
+            Square square = new Square(2.2);
+            assertEquals(8.8, square.calculatePerimeter(), 0.1);
+        }
+    }
 }
