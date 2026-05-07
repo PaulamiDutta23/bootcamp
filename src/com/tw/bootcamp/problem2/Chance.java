@@ -1,22 +1,27 @@
 package com.tw.bootcamp.problem2;
 
+import java.util.Objects;
+
 public class Chance {
-    private final double totalCoins;
+    private final double probability;
 
-    private Chance(double totalCoins) {
-        this.totalCoins = totalCoins;
+    public Chance(double probability) {
+        this.probability = probability;
     }
 
-    public static Chance createChanceForCoins(double totalCoins) {
-        return new Chance(totalCoins);
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Chance chance = (Chance) o;
+        return Double.compare(probability, chance.probability) == 0;
     }
 
-    public double getTails() {
-        double possibleOutcomes = Math.pow(2, this.totalCoins);
-        return 1/possibleOutcomes;
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(probability);
     }
 
-    public double getNoTails() {
-        return 1 - getTails();
+    public double inverse() {
+        return 1 - this.probability;
     }
 }

@@ -9,14 +9,14 @@ public class ChanceTest {
     @Test
     @DisplayName("chance of getting tail")
     void chanceOfGettingTail(){
-        Chance coinsChance = Chance.createChanceForCoins(1);
-        assertEquals(0.5,coinsChance.getTails(), 0.1);
+        Chance chanceOfGettingTails = new Chance(0.5);
+        assertEquals(new Chance(0.5),chanceOfGettingTails);
     }
 
     @Test
     @DisplayName("chance of not getting tail")
     void chanceOfNotGettingTail(){
-        Chance coinsChance = Chance.createChanceForCoins(1);
-        assertEquals(0.5,coinsChance.getNoTails(), 0.1);
+        Chance chanceOfGettingTails = new Chance(0.5);
+        assertEquals(0.5,chanceOfGettingTails.inverse());
     }
 }
