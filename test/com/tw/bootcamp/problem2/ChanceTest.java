@@ -34,4 +34,12 @@ public class ChanceTest {
         Chance chance = new Chance();
         assertEquals(0.16,chance.generateChance(6,1),0.1);
     }
+
+    @Test
+    @DisplayName("chance of getting at least one tail on flipping 2 coins")
+    void chanceOfGettingAtLeast1Tail(){
+        Chance chance1 = new Chance(0.5);
+        Chance chance2 = new Chance(0.5);
+        assertEquals(0.75,Chance.union(chance1, chance2));
+    }
 }

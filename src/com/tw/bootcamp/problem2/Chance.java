@@ -13,16 +13,14 @@ public class Chance {
 
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        Chance chance = (Chance) o;
-        return Double.compare(probability, chance.probability) == 0;
+    public static double intersection(Chance chance1, Chance chance2) {
+        return chance1.probability * chance2.probability;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(probability);
+    public static double union(Chance chance1, Chance chance2) {
+        Chance inverseChance1 = new Chance(chance1.inverse());
+        Chance inverseChance2 = new Chance(chance2.inverse());
+        return new Chance(intersection(inverseChance1, inverseChance2)).inverse();
     }
 
     public double inverse() {
@@ -33,7 +31,17 @@ public class Chance {
         return noOfFavourableEvent/totalSampleSpace;
     }
 
-    public static double intersection(Chance chance1, Chance chance2) {
-        return chance1.probability * chance2.probability;
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Chance chance = (Chance) o;
+        return Double.compare(probability, chance.probability) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(probability);
     }
 }
