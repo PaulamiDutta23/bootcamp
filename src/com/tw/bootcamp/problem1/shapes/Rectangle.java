@@ -1,15 +1,19 @@
 package com.tw.bootcamp.problem1.shapes;
 
 public class Rectangle {
-    private final int length;
-    private final int breadth;
+    private final double length;
+    private final double breadth;
 
-    public Rectangle(int length, int breadth) {
+    public Rectangle(double length, double breadth) {
         this.length = length;
         this.breadth = breadth;
     }
 
-    public int calculateArea() {
+    public double calculateArea() {
         return this.length * this.breadth;
+    }
+
+    public double calculatePerimeter() {
+        return 2 * (this.length + this.breadth);
     }
 }
