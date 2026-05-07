@@ -5,11 +5,11 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class CoinTest {
+public class ChanceTest {
     @Test
     @DisplayName("chance of getting tail")
     void chanceOfGettingTail(){
-        Coin coin = new Coin();
-        assertEquals(0.5,coin.tailProbability(), 0.1);
+        Chance coinsChance = Chance.createChanceForCoins(1);
+        assertEquals(0.5,coinsChance.getTails(), 0.1);
     }
 }
