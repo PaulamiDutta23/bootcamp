@@ -19,4 +19,11 @@ public class ChanceTest {
         Chance chanceOfGettingTails = new Chance(0.5);
         assertEquals(0.5,chanceOfGettingTails.inverse());
     }
+
+    @Test
+    @DisplayName("chance of getting tail for two coins")
+    void chanceOfNotGettingTailForTwoCoins(){
+        Chance chanceOfGettingTails = new Chance(0.75);
+        assertEquals(new Chance(0.75),chanceOfGettingTails);
+    }
 }
