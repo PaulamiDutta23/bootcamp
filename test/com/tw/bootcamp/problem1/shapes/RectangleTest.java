@@ -36,7 +36,7 @@ class RectangleTest {
         @DisplayName("- Error")
         void shouldThrowErrorOnZeroValues() {
             Rectangle rectangle = new Rectangle(2.2, 0);
-            RuntimeException error = assertThrows(RuntimeException.class, () -> rectangle.calculateArea());
+            RuntimeException error = assertThrows(RuntimeException.class, rectangle::calculateArea);
             assertEquals("length or breadth cannot be less than 1",error.getMessage());
         }
     }
@@ -69,7 +69,7 @@ class RectangleTest {
         @DisplayName("- Error")
         void shouldThrowErrorOnZeroValues() {
             Rectangle rectangle = new Rectangle(2.2, 0);
-            RuntimeException error = assertThrows(RuntimeException.class, () -> rectangle.calculatePerimeter());
+            RuntimeException error = assertThrows(RuntimeException.class, rectangle::calculatePerimeter);
             assertEquals("length or breadth cannot be less than 1",error.getMessage());
         }
     }
