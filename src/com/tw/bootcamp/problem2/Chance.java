@@ -10,6 +10,9 @@ public class Chance {
     }
 
     public static Chance create(double chance) {
+        if(chance < 0.0 || chance > 1.0){
+            throw new InvalidProbabilityRangeException("Probability is out of range");
+        }
         return new Chance(chance);
     }
 

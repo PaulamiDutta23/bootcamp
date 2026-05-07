@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ChanceTest {
     @Test
@@ -42,5 +43,17 @@ public class ChanceTest {
         Chance chanceOfGettingTailOnCoinA = Chance.create(0.5);
         Chance chanceOfGettingTailOnCoinB = Chance.create(0.5);
         assertEquals(Chance.create(0.75),chanceOfGettingTailOnCoinA.or(chanceOfGettingTailOnCoinB));
+    }
+
+    @Test
+    @DisplayName("should throw error on greater probability range")
+    void shouldThrowErrorOnGreaterProbabilityRange(){
+        assertThrows(InvalidProbabilityRangeException.class,() -> Chance.create(2.0));
+    }
+
+    @Test
+    @DisplayName("should throw error on lesser probability range")
+    void shouldThrowErrorOnLesserProbabilityRange(){
+        assertThrows(InvalidProbabilityRangeException.class,() -> Chance.create(-0.1));
     }
 }
