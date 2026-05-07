@@ -15,4 +15,8 @@ public class Chance {
         double possibleOutcomes = Math.pow(2, this.totalCoins);
         return 1/possibleOutcomes;
     }
+
+    public double getNoTails() {
+        return 1 - getTails();
+    }
 }

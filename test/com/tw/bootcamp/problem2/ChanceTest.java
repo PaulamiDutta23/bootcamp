@@ -12,4 +12,11 @@ public class ChanceTest {
         Chance coinsChance = Chance.createChanceForCoins(1);
         assertEquals(0.5,coinsChance.getTails(), 0.1);
     }
+
+    @Test
+    @DisplayName("chance of not getting tail")
+    void chanceOfNotGettingTail(){
+        Chance coinsChance = Chance.createChanceForCoins(1);
+        assertEquals(0.5,coinsChance.getNoTails(), 0.1);
+    }
 }
