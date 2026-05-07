@@ -4,7 +4,7 @@ import com.tw.bootcamp.problem1.shapes.Rectangle;
 
 public class App {
     static void main() {
-        Rectangle rectangle = new Rectangle(4, 5);
-        double area = rectangle.calculateArea();
+        Rectangle rectangle = Rectangle.createRectangle(4, 5);
+        double area = rectangle.area();
     }
 }

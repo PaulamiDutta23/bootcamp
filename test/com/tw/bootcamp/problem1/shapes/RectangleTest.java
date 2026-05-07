@@ -13,31 +13,30 @@ class RectangleTest {
     class RectangleArea{
         @Test
         @DisplayName("- int")
-        void shouldCalculateArea() {
-            Rectangle rectangle = new Rectangle(2, 3);
-            assertEquals(6, rectangle.calculateArea());
+        void shouldArea() {
+            Rectangle rectangle = Rectangle.createRectangle(2, 3);
+            assertEquals(6, rectangle.area());
         }
 
         @Test
         @DisplayName("- double")
-        void shouldCalculateAreaForDoubleValues() {
-            Rectangle rectangle = new Rectangle(2.2, 3.2);
-            assertEquals(7.04, rectangle.calculateArea(), 0.1);
+        void shouldAreaForDoubleValues() {
+            Rectangle rectangle = Rectangle.createRectangle(2.2, 3.2);
+            assertEquals(7.04, rectangle.area(), 0.1);
         }
 
         @Test
         @DisplayName("- double & int")
-        void shouldCalculateAreaForDoubleAndIntValues() {
-            Rectangle rectangle = new Rectangle(2.2, 3);
-            assertEquals(6.6, rectangle.calculateArea(), 0.1);
+        void shouldAreaForDoubleAndIntValues() {
+            Rectangle rectangle = Rectangle.createRectangle(2.2, 3);
+            assertEquals(6.6, rectangle.area(), 0.1);
         }
 
         @Test
         @DisplayName("- Error")
         void shouldThrowErrorOnZeroValues() {
-            Rectangle rectangle = new Rectangle(2.2, 0);
-            RuntimeException error = assertThrows(RuntimeException.class, rectangle::calculateArea);
-            assertEquals("length or breadth cannot be less than 1",error.getMessage());
+            RuntimeException error = assertThrows(RuntimeException.class, ()->Rectangle.createRectangle(2,0));
+            assertEquals("side cannot be less than 1",error.getMessage());
         }
     }
 
@@ -46,31 +45,80 @@ class RectangleTest {
     class RectanglePerimeter {
         @Test
         @DisplayName("- int")
-        void shouldCalculatePerimeterForInt() {
-            Rectangle rectangle = new Rectangle(2, 3);
-            assertEquals(10, rectangle.calculatePerimeter());
+        void shouldPerimeterForInt() {
+            Rectangle rectangle = Rectangle.createRectangle(2, 3);
+            assertEquals(10, rectangle.perimeter());
         }
 
         @Test
         @DisplayName("- double")
-        void shouldCalculatePerimeterForDouble() {
-            Rectangle rectangle = new Rectangle(2.2, 3.1);
-            assertEquals(10.6, rectangle.calculatePerimeter(), 0.1);
+        void shouldPerimeterForDouble() {
+            Rectangle rectangle = Rectangle.createRectangle(2.2, 3.1);
+            assertEquals(10.6, rectangle.perimeter(), 0.1);
         }
 
         @Test
         @DisplayName("- double & int")
-        void shouldCalculatePerimeterForDoubleAndInt() {
-            Rectangle rectangle = new Rectangle(2.2, 3);
-            assertEquals(10.4, rectangle.calculatePerimeter(), 0.1);
+        void shouldPerimeterForDoubleAndInt() {
+            Rectangle rectangle = Rectangle.createRectangle(2.2, 3);
+            assertEquals(10.4, rectangle.perimeter(), 0.1);
         }
 
         @Test
         @DisplayName("- Error")
         void shouldThrowErrorOnZeroValues() {
-            Rectangle rectangle = new Rectangle(2.2, 0);
-            RuntimeException error = assertThrows(RuntimeException.class, rectangle::calculatePerimeter);
-            assertEquals("length or breadth cannot be less than 1",error.getMessage());
+            RuntimeException error = assertThrows(RuntimeException.class, ()->Rectangle.createRectangle(2.2, 0));
+            assertEquals("side cannot be less than 1",error.getMessage());
+        }
+    }
+
+    @Nested
+    @DisplayName("square area")
+    class SquareAreaTest {
+        @Test
+        @DisplayName("- int")
+        void shouldCalculateAreaForInt() {
+            Rectangle square = Rectangle.createSquare(2);
+            assertEquals(4, square.area());
+        }
+
+        @Test
+        @DisplayName("- double")
+        void shouldCalculateAreaForDouble() {
+            Rectangle square = Rectangle.createSquare(2.2);
+            assertEquals(4.84, square.area(), 0.1);
+        }
+
+        @Test
+        @DisplayName("- Error")
+        void shouldThrowErrorOnZeroValues() {
+            RuntimeException error = assertThrows(RuntimeException.class, () -> Rectangle.createSquare(0));
+            assertEquals("side cannot be less than 1",error.getMessage());
+        }
+    }
+
+    @Nested
+    @DisplayName("square perimeter")
+    class SquarePerimeterTest {
+        @Test
+        @DisplayName("- int")
+        void shouldCalculatePerimeterForInt() {
+            Rectangle square = Rectangle.createSquare(2);
+            assertEquals(8, square.perimeter());
+        }
+
+        @Test
+        @DisplayName("- double")
+        void shouldCalculatePerimeterForDouble() {
+            Rectangle square = Rectangle.createSquare(2.2);
+            assertEquals(8.8, square.perimeter(), 0.1);
+        }
+
+        @Test
+        @DisplayName("- Error")
+        void shouldThrowErrorOnZeroValues() {
+            RuntimeException error = assertThrows(RuntimeException.class, ()-> Rectangle.createSquare(0));
+            assertEquals("side cannot be less than 1",error.getMessage());
         }
     }
 }
