@@ -23,8 +23,9 @@ public class ChanceTest {
     @Test
     @DisplayName("chance of getting tail for two coins")
     void chanceOfNotGettingTailForTwoCoins(){
-        Chance chance = new Chance(0.75);
-        assertEquals(new Chance(0.75),chance);
+        Chance chance1 = new Chance(0.5);
+        Chance chance2 = new Chance(0.5);
+        assertEquals(0.25,Chance.intersection(chance1, chance2));
     }
 
     @Test
@@ -32,6 +33,5 @@ public class ChanceTest {
     void chanceOfGetting3OnADice(){
         Chance chance = new Chance();
         assertEquals(0.16,chance.generateChance(6,1),0.1);
-
     }
 }

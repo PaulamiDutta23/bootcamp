@@ -32,4 +32,8 @@ public class Chance {
     public double generateChance(double totalSampleSpace, double noOfFavourableEvent) {
         return noOfFavourableEvent/totalSampleSpace;
     }
+
+    public static double intersection(Chance chance1, Chance chance2) {
+        return chance1.probability * chance2.probability;
+    }
 }
