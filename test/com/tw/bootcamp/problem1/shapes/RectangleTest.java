@@ -35,7 +35,7 @@ class RectangleTest {
         @Test
         @DisplayName("- Error")
         void shouldThrowErrorOnZeroValues() {
-            RuntimeException error = assertThrows(RuntimeException.class, ()->Rectangle.createRectangle(2,0));
+            RuntimeException error = assertThrows(InvalidLengthAndBreadthException.class, ()->Rectangle.createRectangle(2,0));
             assertEquals("side cannot be less than 1",error.getMessage());
         }
     }
@@ -67,7 +67,7 @@ class RectangleTest {
         @Test
         @DisplayName("- Error")
         void shouldThrowErrorOnZeroValues() {
-            RuntimeException error = assertThrows(RuntimeException.class, ()->Rectangle.createRectangle(2.2, 0));
+            RuntimeException error = assertThrows(InvalidLengthAndBreadthException.class, ()->Rectangle.createRectangle(2.2, 0));
             assertEquals("side cannot be less than 1",error.getMessage());
         }
     }
@@ -92,7 +92,7 @@ class RectangleTest {
         @Test
         @DisplayName("- Error")
         void shouldThrowErrorOnZeroValues() {
-            RuntimeException error = assertThrows(RuntimeException.class, () -> Rectangle.createSquare(0));
+            RuntimeException error = assertThrows(InvalidLengthAndBreadthException.class, () -> Rectangle.createSquare(0));
             assertEquals("side cannot be less than 1",error.getMessage());
         }
     }
@@ -117,7 +117,7 @@ class RectangleTest {
         @Test
         @DisplayName("- Error")
         void shouldThrowErrorOnZeroValues() {
-            RuntimeException error = assertThrows(RuntimeException.class, ()-> Rectangle.createSquare(0));
+            RuntimeException error = assertThrows(InvalidLengthAndBreadthException.class, ()-> Rectangle.createSquare(0));
             assertEquals("side cannot be less than 1",error.getMessage());
         }
     }

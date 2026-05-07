@@ -11,7 +11,7 @@ public class Rectangle {
 
     public static Rectangle createRectangle(double length, double breadth) {
         if(length < 1 || breadth < 1) {
-            throw new RuntimeException("side cannot be less than 1");
+            throw new InvalidLengthAndBreadthException("side cannot be less than 1");
         }
 
         return new Rectangle(length, breadth);
