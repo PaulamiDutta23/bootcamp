@@ -47,7 +47,7 @@ public class Length {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Length length = (Length) o;
-        return Double.compare(actualUnits, length.actualUnits) == 0 && Double.compare(unitsInBase, length.unitsInBase) == 0;
+        return Double.compare(actualUnits, length.actualUnits) < 0.0001 && Double.compare(unitsInBase, length.unitsInBase) < 0.0001;
     }
 
     @Override
