@@ -3,8 +3,7 @@ package com.tw.bootcamp.problem3;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class LengthTest {
     @Test
@@ -35,6 +34,13 @@ public class LengthTest {
         Length lengthInCentimeters = Length.createCentimeters(1);
         Length lengthInMillimeters = Length.createMillimeters(10);
         assertTrue(lengthInCentimeters.isEqual(lengthInMillimeters));
+    }
+
+    @Test
+    @DisplayName("add two inches")
+    void shouldAddTwoInches(){
+        Length lengthInInches = Length.createInches(2);
+        assertEquals(Length.createInches(4),lengthInInches.add(lengthInInches));
     }
 
 }
