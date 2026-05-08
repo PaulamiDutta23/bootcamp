@@ -27,4 +27,8 @@ public class ParkingArea {
         this.lots.set(++this.lastFilledLotIndex, true);
         return true;
     }
+
+    public boolean isFull() {
+        return this.lastFilledLotIndex == this.lots.size()-1;
+    }
 }
