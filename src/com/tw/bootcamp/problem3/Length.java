@@ -34,11 +34,6 @@ public class Length {
         return  createLength(millimeter, millimeter * 0.0393701);
     }
 
-    public boolean isEqual(Length lengthInInches) {
-        double threshold = 0.00001;
-        return Math.abs(this.unitsInBase - lengthInInches.unitsInBase) < threshold;
-    }
-
     public Length add(Length otherLength) {
         return Length.createInches(this.unitsInBase + otherLength.unitsInBase);
     }
@@ -47,7 +42,7 @@ public class Length {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Length length = (Length) o;
-        return Double.compare(actualUnits, length.actualUnits) < 0.0001 && Double.compare(unitsInBase, length.unitsInBase) < 0.0001;
+        return Math.abs(unitsInBase - length.unitsInBase) < 0.1;
     }
 
     @Override

@@ -12,7 +12,7 @@ public class LengthTest {
     void shouldCheckFeetToInches(){
         Length lengthInFeet = Length.createFeet(1);
         Length lengthInInches = Length.createInches(12);
-        assertTrue(lengthInFeet.isEqual(lengthInInches));
+        assertTrue(lengthInFeet.equals(lengthInInches));
     }
 
     @Test
@@ -20,7 +20,7 @@ public class LengthTest {
     void shouldCheckInchesToCentimeters(){
         Length lengthInInches = Length.createInches(2);
         Length lengthInCentimeters = Length.createCentimeters(5.08);
-        assertTrue(lengthInInches.isEqual(lengthInCentimeters));
+        assertTrue(lengthInInches.equals(lengthInCentimeters));
     }
 
     @Test
@@ -30,11 +30,11 @@ public class LengthTest {
     }
 
     @Test
-    @DisplayName("inches to centimeters")
+    @DisplayName("centimeters to millimeters")
     void shouldCheckCentimetersToMillimeters(){
         Length lengthInCentimeters = Length.createCentimeters(1);
         Length lengthInMillimeters = Length.createMillimeters(10);
-        assertTrue(lengthInCentimeters.isEqual(lengthInMillimeters));
+        assertTrue(lengthInCentimeters.equals(lengthInMillimeters));
     }
 
     @Nested
