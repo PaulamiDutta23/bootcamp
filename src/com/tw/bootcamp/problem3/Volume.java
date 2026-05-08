@@ -1,5 +1,7 @@
 package com.tw.bootcamp.problem3;
 
+import java.util.Objects;
+
 public class Volume {
     private final double actualUnits;
     private final double unitsInLiters;
@@ -24,7 +26,19 @@ public class Volume {
         return createVolume(liters, liters);
     }
 
-    public boolean isEqual(Volume other) {
-        return Math.abs(this.unitsInLiters - other.unitsInLiters) < 0.00001;
+    public Volume add(Volume volumeInLiters) {
+        return Volume.createLiters(this.unitsInLiters+ volumeInLiters.unitsInLiters);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Volume volume = (Volume) o;
+        return Math.abs(this.unitsInLiters - volume.unitsInLiters) < 0.1;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(actualUnits, unitsInLiters);
     }
 }
