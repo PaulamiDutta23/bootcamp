@@ -28,4 +28,12 @@ public class LengthComparisonTest {
     void shouldThrowErrorForInvalidLengthUnits(){
         assertThrows(InvalidLengthUnitsException.class,()->Length.createInches(-2));
     }
+
+    @Test
+    @DisplayName("inches to centimeters")
+    void shouldCheckCentimetersToMillimeters(){
+        Length lengthInCentimeters = Length.createCentimeters(1);
+        Length lengthInMillimeters = Length.createMillimeters(10);
+        assertTrue(lengthInCentimeters.isEqual(lengthInMillimeters));
+    }
 }

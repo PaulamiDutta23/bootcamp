@@ -22,6 +22,10 @@ public class Length {
         return createInches(centimeters * 0.393701);
     }
 
+    public static Length createMillimeters(double millimeter) {
+        return  createInches(millimeter*0.0393701);
+    }
+
     public boolean isEqual(Length lengthInInches) {
         double threshold = 0.00001;
         return Math.abs(this.units - lengthInInches.units) < threshold;
