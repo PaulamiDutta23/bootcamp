@@ -15,7 +15,6 @@ public class Length {
         if(inches < 0.0) {
             throw new InvalidLengthUnitsException("Length can not be negative");
         }
-
         return new Length(inches);
     }
 
@@ -23,7 +22,7 @@ public class Length {
         return createInches(centimeters * 0.393701);
     }
 
-    public boolean compare(Length lengthInInches) {
+    public boolean isEqual(Length lengthInInches) {
         double threshold = 0.00001;
         return Math.abs(this.units - lengthInInches.units) < threshold;
     }
