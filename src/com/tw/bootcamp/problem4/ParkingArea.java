@@ -24,6 +24,9 @@ public class ParkingArea {
 
 
     public boolean park() {
+        if(isFull()){
+            throw new ParkingAreaFullException("Parking area is full");
+        }
         this.lots.set(++this.lastFilledLotIndex, true);
         return true;
     }

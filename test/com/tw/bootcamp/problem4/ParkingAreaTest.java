@@ -1,10 +1,10 @@
 package com.tw.bootcamp.problem4;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ParkingAreaTest {
     @Test
@@ -12,6 +12,14 @@ public class ParkingAreaTest {
     void shouldParkACar(){
         ParkingArea area = ParkingArea.create(5);
         assertTrue(area.park());
+    }
+
+    @Test
+    @DisplayName("Should throw error to park a car")
+    void shouldThrowErrorToParkACar(){
+        ParkingArea area = ParkingArea.create(1);
+        area.park();
+        assertThrows(ParkingAreaFullException.class, () -> area.park());
     }
 
     @Test
