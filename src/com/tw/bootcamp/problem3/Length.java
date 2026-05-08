@@ -8,14 +8,19 @@ public class Length {
     }
 
     public static Length createFeet(double feet) {
-        return createInch(feet * 12);
+        return createInches(feet * 12);
     }
 
-    public static Length createInch(double inch) {
-        return new Length(inch);
+    public static Length createInches(double inches) {
+        return new Length(inches);
     }
 
-    public boolean compare(Length lengthInInch) {
-        return this.units == lengthInInch.units;
+    public static Length createCentimeters(double centimeters) {
+        return createInches(centimeters * 0.393701);
+    }
+
+    public boolean compare(Length lengthInInches) {
+        double threshold = 0.00001;
+        return Math.abs(this.units - lengthInInches.units) < threshold;
     }
 }

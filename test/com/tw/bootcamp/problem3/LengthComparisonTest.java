@@ -7,10 +7,18 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class LengthComparisonTest {
     @Test
-    @DisplayName("feet to inch")
-    void shouldCheckFeetToInch(){
+    @DisplayName("feet to inches")
+    void shouldCheckFeetToInches(){
         Length lengthInFeet = Length.createFeet(1);
-        Length lengthInInch = Length.createInch(12);
-        assertTrue(lengthInFeet.compare(lengthInInch));
+        Length lengthInInches = Length.createInches(12);
+        assertTrue(lengthInFeet.compare(lengthInInches));
+    }
+
+    @Test
+    @DisplayName("inches to centimeters")
+    void shouldCheckInchesToCentimeters(){
+        Length lengthInInches = Length.createInches(2);
+        Length lengthInCentimeters = Length.createCentimeters(5.08);
+        assertTrue(lengthInInches.compare(lengthInCentimeters));
     }
 }
