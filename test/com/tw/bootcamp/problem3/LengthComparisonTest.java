@@ -36,4 +36,5 @@ public class LengthComparisonTest {
         Length lengthInMillimeters = Length.createMillimeters(10);
         assertTrue(lengthInCentimeters.isEqual(lengthInMillimeters));
     }
+
 }
