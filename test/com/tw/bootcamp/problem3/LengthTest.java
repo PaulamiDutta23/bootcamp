@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class LengthComparisonTest {
+public class LengthTest {
     @Test
     @DisplayName("feet to inches")
     void shouldCheckFeetToInches(){
