@@ -12,6 +12,10 @@ public class Length {
     }
 
     public static Length createInches(double inches) {
+        if(inches < 0.0) {
+            throw new InvalidLengthUnitsException("Length can not be negative");
+        }
+
         return new Length(inches);
     }
 
