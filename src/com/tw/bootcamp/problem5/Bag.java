@@ -35,8 +35,8 @@ public class Bag {
         int maxCount = switch (colourBall) {
             case GREEN -> this.MAX_GREEN_BALL;
             case RED -> this.balls.getOrDefault(ColouredBall.GREEN, 0) * 2;
+            case YELLOW -> (int) Math.floor(this.count * 0.4);
             case BLUE -> this.MAX_BLUE_BALL;
-            case YELLOW -> this.MAX_YELLOW_BALL;
         };
 
         if(currentBallCount == maxCount) {

@@ -31,4 +31,41 @@ public class BagTest {
         bag.addBall(ColouredBall.GREEN);
         assertThrows(ColouredBallLimitExceedException.class, () -> bag.addBall(ColouredBall.GREEN));
     }
+
+    @Test
+    @DisplayName("adds a red coloured ball to a bag")
+    void shouldAddARedColouredBall(){
+        Bag bag = Bag.create(3);
+        bag.addBall(ColouredBall.GREEN);
+        bag.addBall(ColouredBall.RED);
+        assertEquals(3,bag.addBall(ColouredBall.RED));
+    }
+
+    @Test
+    @DisplayName("throw error when red ball exceed limit")
+    void shouldThrowAnErrorWhenRedBallExceeds(){
+        Bag bag = Bag.create(4);
+        bag.addBall(ColouredBall.GREEN);
+        bag.addBall(ColouredBall.RED);
+        bag.addBall(ColouredBall.RED);
+        assertThrows(ColouredBallLimitExceedException.class, () -> bag.addBall(ColouredBall.RED));
+    }
+
+    @Test
+    @DisplayName("adds a yellow coloured ball to a bag")
+    void shouldAddAYellowColouredBall(){
+        Bag bag = Bag.create(4);
+        bag.addBall(ColouredBall.GREEN);
+        bag.addBall(ColouredBall.RED);
+        bag.addBall(ColouredBall.BLUE);
+        assertEquals(4,bag.addBall(ColouredBall.YELLOW));
+    }
+
+    @Test
+    @DisplayName("throw error when yellow ball cannot be added")
+    void shouldThrowAnErrorWhenYellowBallCannotBeAdded(){
+        Bag bag = Bag.create(2);
+        bag.addBall(ColouredBall.GREEN);
+        assertThrows(ColouredBallLimitExceedException.class, () -> bag.addBall(ColouredBall.YELLOW));
+    }
 }
