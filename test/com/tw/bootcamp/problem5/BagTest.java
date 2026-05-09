@@ -8,17 +8,17 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class BagTest {
     @Test
-    @DisplayName("add a ball to a bag")
+    @DisplayName("add a coloured ball to a bag")
     void shouldAddABall(){
         Bag bag = Bag.create(12);
-        assertEquals(1,bag.addBall());
+        assertEquals(1,bag.addBall(ColouredBall.BLUE));
     }
 
     @Test
-    @DisplayName("add a ball when bag is full")
+    @DisplayName("throw error to add a ball when bag is full")
     void shouldThrowAnErrorWhenBagIsFull(){
         Bag bag = Bag.create(1);
-        bag.addBall();
-        assertThrows(BagLimitExceedException.class, bag::addBall);
+        bag.addBall(ColouredBall.BLUE);
+        assertThrows(BagLimitExceedException.class, () -> bag.addBall(ColouredBall.BLUE));
     }
 }
