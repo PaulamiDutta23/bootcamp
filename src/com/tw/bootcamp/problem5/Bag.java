@@ -21,7 +21,14 @@ public class Bag {
             throw new BagLimitExceedException("Bag is full");
         }
 
+        checkOverflow(colourBall);
+
         this.balls.merge(colourBall, 1, Integer::sum);
         return ++this.count;
+    }
+
+    private void checkOverflow(ColouredBall colourBall) {
+        int currentBallCount = this.balls.getOrDefault(colourBall,0);
+        colourBall.checkOverflow(currentBallCount);
     }
 }
