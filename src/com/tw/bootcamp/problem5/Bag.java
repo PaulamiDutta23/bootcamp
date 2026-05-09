@@ -6,6 +6,9 @@ public class Bag {
     private final int limit;
     private final HashMap<ColouredBall, Integer> balls;
     private int count;
+    private final int MAX_GREEN_BALL = 3;
+    private final int MAX_BLUE_BALL = 12;
+    private final int MAX_YELLOW_BALL = 12;
 
     private Bag(int limit) {
         this.count = 0;
@@ -28,7 +31,16 @@ public class Bag {
     }
 
     private void checkOverflow(ColouredBall colourBall) {
-        int currentBallCount = this.balls.getOrDefault(colourBall,0);
-        colourBall.checkOverflow(currentBallCount);
+        int currentBallCount = this.balls.getOrDefault(colourBall, 0);
+        int maxCount = switch (colourBall) {
+            case GREEN -> this.MAX_GREEN_BALL;
+            case RED -> this.balls.getOrDefault(ColouredBall.GREEN, 0) * 2;
+            case BLUE -> this.MAX_BLUE_BALL;
+            case YELLOW -> this.MAX_YELLOW_BALL;
+        };
+
+        if(currentBallCount == maxCount) {
+            throw new ColouredBallLimitExceedException("Ball exceeds max count");
+        }
     }
 }

@@ -29,6 +29,6 @@ public class BagTest {
         bag.addBall(ColouredBall.GREEN);
         bag.addBall(ColouredBall.GREEN);
         bag.addBall(ColouredBall.GREEN);
-        assertThrows(GreenBallLimitExceedException.class, () -> bag.addBall(ColouredBall.GREEN));
+        assertThrows(ColouredBallLimitExceedException.class, () -> bag.addBall(ColouredBall.GREEN));
     }
 }
