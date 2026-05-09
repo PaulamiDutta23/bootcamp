@@ -8,7 +8,6 @@ public class Bag {
     private int count;
     private final int MAX_GREEN_BALL = 3;
     private final int MAX_BLUE_BALL = 12;
-    private final int MAX_YELLOW_BALL = 12;
 
     private Bag(int limit) {
         this.count = 0;
@@ -20,27 +19,34 @@ public class Bag {
     }
 
     public int addBall(ColouredBall colourBall) {
-        if(this.count == this.limit){
-            throw new BagLimitExceedException("Bag is full");
-        }
-
-        checkOverflow(colourBall);
+        checkBagOverflow();
+        checkColoredBallOverflow(colourBall);
 
         this.balls.merge(colourBall, 1, Integer::sum);
         return ++this.count;
     }
 
-    private void checkOverflow(ColouredBall colourBall) {
+    private void checkBagOverflow() {
+        if(this.count == this.limit){
+            throw new BagLimitExceedException("Bag is full");
+        }
+    }
+
+    private void checkColoredBallOverflow(ColouredBall colourBall) {
         int currentBallCount = this.balls.getOrDefault(colourBall, 0);
-        int maxCount = switch (colourBall) {
+        int maxCount = getMaxCount(colourBall);
+
+        if(currentBallCount == maxCount) {
+            throw new ColouredBallLimitExceedException("Ball exceeds max count");
+        }
+    }
+
+    private int getMaxCount(ColouredBall colourBall) {
+        return switch (colourBall) {
             case GREEN -> this.MAX_GREEN_BALL;
             case RED -> this.balls.getOrDefault(ColouredBall.GREEN, 0) * 2;
             case YELLOW -> (int) Math.floor(this.count * 0.4);
             case BLUE -> this.MAX_BLUE_BALL;
         };
-
-        if(currentBallCount == maxCount) {
-            throw new ColouredBallLimitExceedException("Ball exceeds max count");
-        }
     }
 }
