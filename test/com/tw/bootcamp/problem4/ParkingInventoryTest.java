@@ -34,6 +34,6 @@ public class ParkingInventoryTest {
         ParkingInventory inventory = ParkingInventory.create();
         inventory.add(ParkingLot.create(1));
         inventory.park();
-        assertThrows(ParkingInventoryFullException.class,()->inventory.park());
+        assertThrows(ParkingInventoryFullException.class, inventory::park);
     }
 }
