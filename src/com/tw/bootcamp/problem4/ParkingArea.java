@@ -2,36 +2,33 @@ package com.tw.bootcamp.problem4;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class ParkingArea {
-    private final List<Boolean> lots;
-    private int lastFilledLotIndex;
+    private final List<ParkingLot> lots;
 
-    public ParkingArea(List<Boolean> lots) {
+    public ParkingArea(List<ParkingLot> lots) {
         this.lots = lots;
-        this.lastFilledLotIndex = -1;
     }
 
     public static ParkingArea create(int size) {
-        List<Boolean> lots = Stream.generate(() -> false)
+        List<ParkingLot> lots = Stream.generate(() -> ParkingLot.create(5))
                 .limit(size)
                 .collect(Collectors.toCollection(ArrayList::new));
-
         return new ParkingArea(lots);
     }
 
-
-    public boolean park() {
-        if(isFull()){
-            throw new ParkingAreaFullException("Parking area is full");
-        }
-        this.lots.set(++this.lastFilledLotIndex, true);
-        return true;
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        ParkingArea that = (ParkingArea) o;
+        return Objects.equals(lots, that.lots);
     }
 
-    public boolean isFull() {
-        return this.lastFilledLotIndex == this.lots.size()-1;
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(lots);
     }
 }
